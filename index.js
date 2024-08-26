@@ -9,7 +9,7 @@ const pool = new Pool(
     host: 'localhost',
     database: 'emp_db'
   },
-  console.log(`Connected to the books_db database.`)
+  console.log(`Connected to the emp_db database.`)
 )
 
 pool.connect();
@@ -212,9 +212,10 @@ function updateEmployee() {
               choices: rolesRec,
               message: "enter new role"
             }
+            
           ]).then(({ employee, role }) => {
 
-            pool.query("UPDATE employee SET ROLE_ID = $1 WHERE ID= $2;", [employee, role])
+            pool.query("UPDATE employee SET ROLE_ID = $1 WHERE ID= $2;", [role, employee])
               .then(({ rows }) => {
 
                 console.log(rows)
